@@ -1,0 +1,19 @@
+server:
+  port: ${PORT:8765}
+  
+logging:
+  level:
+    org.springframework.cloud.netflix.zuul: TRACE
+      
+zuul:
+  routes:  
+    aluguel:
+      path: /aluguel/**
+      url: http://localhost:8080/
+      sensitiveHeaders:
+      serviceId: aluguel
+    oauth:
+      path: /auth/**
+      url: http://localhost:8888/
+      sensitiveHeaders: 
+      serviceId: auth
